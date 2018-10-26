@@ -1,6 +1,6 @@
 <template>
   <div class="goods-list">
-       <div  class="goods-item" v-for="item in goodslist" :key="item.id" >
+       <div  class="goods-item" v-for="item in goodslist" :key="item.id" @click="goDetail(item.id)" >
         <img src="http://ofv795nmp.bkt.clouddn.com//upload/201504/20/thumb_201504200119256512.jpg" alt="">
         <!-- <img :src="item.img_url" alt=""> -->
         <h1 class="title">{{item.title}}</h1>
@@ -49,7 +49,10 @@
           </p>
         </div>
       </div> -->
-    <mt-button type="danger" size="large" @click="getMore" >加载更多</mt-button>
+    
+      <mt-button type="danger" size="large" @click="getMore" >加载更多</mt-button>
+    
+    
   </div>
  
 </template>
@@ -84,6 +87,20 @@ export default {
       this.pageindex++;
       this.getGoodsList();
     },
+    goDetail(id) {
+      //使用JS的形式进行路由导航
+
+      // 注意:一定要区分this.$router 和 this.$router 这两个对象,
+      // 其中,this.$router 是路由参数对象, 所有路由中的参数,params,query 都属于它
+      // 其中,this.$router 是路由导航对象,用它可以方便的使用js代码,实现路由的前进,后退,跳转到新的URl地址
+      // console.log(this);
+      // 1.最简单的
+      // this.$router.push("/home/goodsinfo/" + id);
+      //2.传递对象
+      // this.$router.push({path:"/home/goodsinfo/" + id});
+      // 3.传递命名的路由
+      this.$router.push({ name: "goodsinfo", params: {id}});
+    }
   }
 }
 </script>
