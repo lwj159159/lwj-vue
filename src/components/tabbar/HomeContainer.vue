@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 轮播图区域 -->
-    <swiper :lunbotuList="lunbotuList" ></swiper>
+    <swiper :lunbotuList="lunbotuList" :isfull="true" ></swiper>
     
     
 
